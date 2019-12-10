@@ -24,10 +24,14 @@ public:
 	void Run();
 private:
 
+	void RenderUI();
 	GLuint program;
 	GLuint vertexShader;
 	GLuint pixelShader;
 	GLuint triangle;
 	Display::Window* window;
+	GLchar *vsBuffer;
+	GLchar *fsBuffer;
+	std::string compilerLog;
 };
 } // namespace Example
