@@ -221,7 +221,6 @@ namespace Example
 		float x, y;
 		std::vector<GLfloat> fin;
 		inFile.open("datafile.txt");
-		//inFile.open("final_dark_souls_boss.txt");
 		if (!inFile) {
 			cerr << "Unable to open file datafile.txt";
 			exit(1);   // call system to stop
@@ -229,7 +228,7 @@ namespace Example
 		while (inFile >> x >> y) {
 			std::vector<GLfloat> calcpoints = {
 			x,	y,	-1,
-			1,	0,	1,	 1
+			1,	0,	1,	 0.5
 			};
 			fin.insert(fin.end(), calcpoints.begin(), calcpoints.end());
 		}
@@ -244,7 +243,6 @@ namespace Example
 		float x, y;
 		std::vector<GLfloat> fin;
 		inFile.open("datafile2.txt");
-		//inFile.open("final_dark_souls_boss.txt");
 		if (!inFile) {
 			cerr << "Unable to open file datafile.txt";
 			exit(1);   // call system to stop
@@ -252,7 +250,7 @@ namespace Example
 		while (inFile >> x >> y) {
 			std::vector<GLfloat> calcpoints = {
 			x,	y,	-1,
-			1,	0,	1,	 1
+			1,	0,	1,	 0.5
 			};
 			fin.insert(fin.end(), calcpoints.begin(), calcpoints.end());
 		}
