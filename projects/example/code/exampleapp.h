@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 #include "core/app.h"
 #include "render/window.h"
+#include "GraphicsNode.h"
 namespace Example
 {
 class ExampleApp : public Core::App
@@ -23,15 +24,20 @@ public:
 	/// run app
 	void Run();
 private:
+	void RenderUI(); 
 
-	void RenderUI();
-	GLuint program;
-	GLuint vertexShader;
-	GLuint pixelShader;
-	GLuint triangle;
+	std::vector<GraphicsNode*> gnv;
+	GraphicsNode* gnt;
+	GraphicsNode* gnt2;
 	Display::Window* window;
-	GLchar *vsBuffer;
-	GLchar *fsBuffer;
-	std::string compilerLog;
+	float cube1camX;
+	float cube1camY;
+	float cube1camZ;
+	float cube2camX;
+	float cube2camY;
+	float cube2camZ;
+	float cube1angle;
+	float cube2angle;
+	
 };
 } // namespace Example
