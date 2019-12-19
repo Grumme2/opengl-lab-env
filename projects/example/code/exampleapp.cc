@@ -138,6 +138,12 @@ ExampleApp::Open()
 	glm::mat4 translation = glm::mat4(1.0);
 
 	translation = glm::translate(translation, glm::vec3(0.5f, 0.0f, 0.0f));
+	glm::mat4 translation2 = glm::translate(transform, glm::vec3(-0.2f, -0.3f, 0.25f));
+
+	SimpleMaterial* material3 = new SimpleMaterial(LookAt, Colour2);
+
+	material3->changeTranslation(translation2);
+	material3->changefscamerapos(cameraPos);
 
 	//transform = glm::translate(transform, glm::vec3(0, 0, 0));
 	material2->changeTranslation(translation);
@@ -149,7 +155,7 @@ ExampleApp::Open()
 	GraphicsNode* gn2 = new GraphicsNode(mesh, material2, LookAt);*/
 	gnt = new GraphicsNode(mesh, material, LookAt);
 	gnt2 = new GraphicsNode(mesh, material2, LookAt);
-
+	GraphicsNode* gnt3 = new GraphicsNode(mesh, material3, LookAt);
 
 	//this->vsBuffer = new GLchar[STRING_BUFFER_SIZE];
 	//this->fsBuffer = new GLchar[STRING_BUFFER_SIZE];
@@ -157,7 +163,7 @@ ExampleApp::Open()
 	//// copy the hardcoded shader into buffer
 	//strncpy_s(this->vsBuffer, STRING_BUFFER_SIZE, vs, STRING_BUFFER_SIZE);
 	//strncpy_s(this->fsBuffer, STRING_BUFFER_SIZE, ps, STRING_BUFFER_SIZE);
-	////ExampleApp::gnv = {gn2, gn};
+	ExampleApp::gnv = {gnt2, gnt, gnt3};
 
 	this->window->SetUiRender([this]()
 	{
@@ -200,7 +206,7 @@ ExampleApp::Run()
 		//
 		//glm::mat4 LookAt = glm::lookAt(glm::vec3(0.0f, 0.0, 3.0f), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
 
-		//for (int i = 0; i < gnv.size(); i++) {
+		for (int i = 0; i < gnv.size(); i++) {
 			//gnv.at(i)->material->changeTransform(LookAt);
 
 			//tst->changeTransform(view);
@@ -256,26 +262,35 @@ ExampleApp::Run()
 			//mesh->setupmesh();
 			glm::mat4 view = glm::mat4(1.0);
 			//ExampleApp::gn = new GraphicsNode(mesh, material, view);
-			glm::mat4 point1 = glm::translate(view, glm::vec3(cube1camX, cube1camY, cube1camZ));
-			glm::mat4 point2 = glm::translate(view, glm::vec3(cube2camX, cube2camY, cube2camZ));
-			
-			glm::mat4 rot = glm::rotate(view, cube1angle, glm::vec3(0, 1, 0));
-			glm::mat4 rot2 = glm::rotate(view, cube2angle, glm::vec3(0, 1, 0));
+			if (i == 1) {
+				glm::mat4 point1 = glm::translate(view, glm::vec3(cube1camX, cube1camY, cube1camZ));
+				glm::mat4 rot = glm::rotate(view, cube1angle, glm::vec3(0, 1, 0));
+				point1 = point1 * rot;
+				gnv.at(i)->material->changeTranslation(point1);
+				gnv.at(i)->Draw();
+				//gnt->material->changeTranslation(point1);
+				//ExampleApp::gnt->Draw();
 
-			point1 = point1 * rot;
-			point2 = point2 * rot2;
+			}
+			else  if (i==0) {
+				glm::mat4 point2 = glm::translate(view, glm::vec3(cube2camX, cube2camY, cube2camZ));
+				glm::mat4 rot2 = glm::rotate(view, cube2angle, glm::vec3(0, 1, 0));
+				point2 = point2 * rot2;
+				gnv.at(i)->material->changeTranslation(point2);
+				gnv.at(i)->Draw();
+			}
+			else {
+				gnv.at(i)->Draw();
+			}
 
 
 
-			gnt->material->changeTranslation(point1);
-			ExampleApp::gnt->Draw();
-
-			gnt2->material->changeTranslation(point2);
-			ExampleApp::gnt2->Draw();
+			//ExampleApp::gnt2->Draw();
+			//gnt2->material->changeTranslation(point2);
 			
 			/*ExampleApp::gnv.at(0)->Draw();
 			ExampleApp::gnv.at(1)->Draw();*/
-		//}
+		}
 		this->window->SwapBuffers();
 	}
 	
