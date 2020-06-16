@@ -136,9 +136,21 @@
   <ItemGroup>
     <ClCompile Include="..\projects\example\code\exampleapp.cc" />
     <ClCompile Include="..\projects\example\code\main.cc" />
+    <ClCompile Include="GraphicsNode.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="SimpleMaterial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\projects\example\code\exampleapp.h" />
+    <ClInclude Include="GraphicsNode.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderProgram.h" />
+    <ClInclude Include="SimpleMaterial.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

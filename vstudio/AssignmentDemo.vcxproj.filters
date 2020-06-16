@@ -3,8 +3,20 @@
   <ItemGroup>
     <ClCompile Include="..\projects\example\code\exampleapp.cc" />
     <ClCompile Include="..\projects\example\code\main.cc" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="SimpleMaterial.cpp" />
+    <ClCompile Include="GraphicsNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\projects\example\code\exampleapp.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderProgram.h" />
+    <ClInclude Include="GraphicsNode.h" />
+    <ClInclude Include="SimpleMaterial.h" />
   </ItemGroup>
 </Project>
